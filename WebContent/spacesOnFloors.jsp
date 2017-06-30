@@ -40,7 +40,8 @@ input[type=text], select {
 }
 
 input[type=submit] {
-    width: 200px;
+    width: 300px;
+    height:110px;
     background-color: #E91E63;
     color:  white;
     padding: 8px 8px;
@@ -48,11 +49,12 @@ input[type=submit] {
     border: none;
     border-radius: 2px;
     cursor: pointer;
+    align:center;
 }
 
 input[type=submit]:hover {
     background-color: ##E91E69;
-   
+     
 }
 
 div {
@@ -76,17 +78,30 @@ The spaces on each Floors is:
 <s:property value="spacesOnFloors"/>
 </h3>
 <div align="center">
+
 <s:form action="vehicleEntry" align="center">
 	<s:submit label="Vehicle Entry" value="Vehicle Entry">
 	</s:submit>
+
 </s:form>
+<br>
+<br>
 <s:form action="vehicleDepart" align="center">
 	<s:submit label="Vehicle Depart" value="Vehicle Depart">
 	</s:submit>
 
 
 </s:form>
+<br>
+<br>
+<s:form action="costSummary" align="center">
+	<s:submit label="Cost Summary" value="Cost Summary">
+	</s:submit>
+
+
+</s:form>
 </div>
+
 
 </body>
 </html>

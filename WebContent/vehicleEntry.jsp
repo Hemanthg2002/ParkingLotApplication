@@ -35,6 +35,7 @@ input[type=text], select {
 
 input[type=submit] {
     width: 100%;
+    
     background-color: #E91E63;
     color:  white;
     padding: 8px 8px;
@@ -46,6 +47,7 @@ input[type=submit] {
 
 input[type=submit]:hover {
     background-color: ##E91E69;
+  
 }
 
 .firstDiv {
@@ -68,14 +70,46 @@ padding:10px;
     padding:4px;  
     text-align:center;  
 }
+.vertical-menu {
+    width: 200px; /* Set a width if you like */
+}
+
+.vertical-menu a {
+    background-color: #eee; /* Grey background color */
+    color: black; /* Black text color */
+    display: block; /* Make the links appear below each other */
+    padding: 12px; /* Add some padding */
+    text-decoration: none; /* Remove underline from links */
+}
+
+.vertical-menu a:hover {
+    background-color: #ccc; /* Dark grey background on mouse-over */
+}
+
+.vertical-menu a.active {
+    background-color: #4CAF50; /* Add a green color to the "active/current" link */
+    color: white;
+}
 </style>
 </head>
 <body>
+ <div class="vertical-menu">
+  <a href="index.jsp" class="active">Home</a>
+  <a href="vehicleDepart.jsp">Depart</a>
+  <a href="costSummary.jsp">Cost Summary</a>
+  <a href="parkingSummary.jsp">Parking Summary</a>
+
+</div> 
 <h3 class="formheading">Vehicle entry Form</h3>
 <div class="firstDiv">
 <div>
 <s:form action="vehicleEntryAction" align="center">
 	<s:textfield label="Vehicle Number :" key="vehicleNumber"/>
+	<s:select label="Vehicle Type" name="selectedVehicleType" list="#{'1':'Bike','2':'Car','3':'Bus'}" key="selectedVehicleType" required="true">
+	
+	</s:select>
+	
+	
 	<s:submit />
 </s:form>
 </div>

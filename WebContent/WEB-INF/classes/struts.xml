@@ -17,7 +17,8 @@
 					<result name="success">/vehicleEntryInfo.jsp</result>      			
       			</action>
       			<action name="vehicleDepartAction" class="com.ParkingLot.action.vehicleDepartAction">
-					<result name="success">/vehicleDepartInfo.jsp</result>      			
+					<result name="success">/vehicleDepartInfo.jsp</result>  
+					<result name="input">/vehicleDepart.jsp</result>    			
       			</action>
       			<action name="vehicleDepart">
 					<result>/vehicleDepart.jsp</result>      			
@@ -27,6 +28,12 @@
       			</action>
       			<action name="fromDepartToEntry">
 					<result>/vehicleEntry.jsp</result>      			
+      			</action>
+      			<action name="costSummary">
+      				<result>/costSummary.jsp</result>
+      			</action>
+      			<action name="parkingSummary">
+      				<result>/parkingSummary.jsp</result>
       			</action>
       			<action name="indexAction"
       				class="com.ParkingLot.action.indexAction"

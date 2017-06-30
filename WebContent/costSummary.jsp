@@ -1,16 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@ taglib prefix="s" uri="/struts-tags"%>
+  <%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ page import="java.sql.*" %>
 
-<% Class.forName("org.postgresql.Driver"); %>
-
-<HTML>
-    <HEAD>
-        <TITLE>Parking Lot Database Table </TITLE>      
-        
-        
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Cost Summary of Different Vehicles</title>
 <STYLE type="text/css">
 table.mainTable th{
 	text-align: CENTER;
@@ -68,17 +65,12 @@ table.mainTable th, td {
 }
 table.mainTable tr:nth-child(even) {background-color: #f2f2f2}
 </STYLE>
-     </HEAD>
-
-    <BODY>
-        
-
-        <% 
-            Connection connection = DriverManager.getConnection(
-                "jdbc:postgresql://localhost:5432/test2", "postgres", "admin");
+</head>
+<body>
+ <%  Connection connection = DriverManager.getConnection( "jdbc:postgresql://localhost:5432/test2", "postgres", "admin");
 
             Statement statement = connection.createStatement() ;
-            String sql="select * from parkinglot";
+            String sql="select * from costSummary";
          
            /* try(PreparedStatement pstmt=connection.prepareStatement(sql)){
             	pstmt.setInt(1, floorNumber);
@@ -87,25 +79,23 @@ table.mainTable tr:nth-child(even) {background-color: #f2f2f2}
            ResultSet resultset = statement.executeQuery(sql);
             
         %>
-		<H1 class="heading" >Parking Lot Database Table </H1>
+		<H1 class="heading" >Cost Summary Database Table </H1>
         <TABLE class="mainTable" BORDER="1">
             <TR>
-                <TH>Vehicle NO.</TH>
+              
                 <TH>Vehicle Type</TH>
-                <TH>Floor Number</TH>
-                <Th>Space Number</Th>
-                <TH>Entry Time</TH>
-                <TH>Exit Time</TH>
+                <TH>Number Of Vehicles Processed</TH>
+                
+                <TH>Amount Collected</TH>
+                
             </TR>
             <% while(resultset.next()){ %>
             <TR>
                 <TD> <%= resultset.getString(1) %></td>
-                <TD> <%= resultset.getString(2) %></TD>
-                <TD> <%= resultset.getString(3) %></TD>
+                <TD> <%= resultset.getInt(2) %></TD>
+                <TD> <%= resultset.getInt(3) %></TD>
                 
-                <TD> <%= resultset.getString(4) %></TD>
-                <TD> <%= resultset.getString(5) %></TD>
-                <Td> <%=resultset.getString(6) %></Td>
+               
             </TR>
             <% } %>
         </TABLE>
@@ -122,20 +112,7 @@ table.mainTable tr:nth-child(even) {background-color: #f2f2f2}
  	<input type="submit" value="To Depart">
  </form>
 	</td>
-	</tr>
-	<tr>
-	<td>
-	 <form action="parkingSummary">
- 	<input type="submit" value="Parking Summary">
- </form>
-	</td>
-	<td>
-	 <form action="costSummary">
- 	<input type="submit" value="Cost Summary">
- </form>
-	</td>
-	
+</tr>
  </table>
- 
-    </BODY>
-</HTML>
+</body>
+</html>

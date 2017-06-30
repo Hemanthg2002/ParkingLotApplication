@@ -3,8 +3,8 @@ package com.ParkingLot.model;
 public class User {
 	
 	//Parameters for storing Values
-	int numberOfFloors;
-	int spacesOnFloors;
+	private static int numberOfFloors;
+	private static int spacesOnFloors;
 	
 	//Getters and Setters for numberOfFloors
 	
@@ -12,7 +12,7 @@ public class User {
 		return numberOfFloors;
 	}
 	public void setNumberOfFloors(int numberOfFloors) {
-		this.numberOfFloors = numberOfFloors;
+		User.numberOfFloors = numberOfFloors;
 	}
 	
 	
@@ -22,7 +22,7 @@ public class User {
 		return spacesOnFloors;
 	}
 	public void setSpacesOnFloors(int spacesOnFloors) {
-		this.spacesOnFloors = spacesOnFloors;
+		User.spacesOnFloors = spacesOnFloors;
 	}
 	
 }

@@ -9,17 +9,20 @@
 <title>Vehicle Depart Info</title>
 </head>
 <STYLE type="text/css">
-th{
+table.mainTable th{
 	text-align: CENTER;
 	background-color: #4CAF50;
     color: white;
 }
-th, td {
+table.mainTable th, td {
     padding: 15px;
-    text-align: left;
+    
 }
-table {
+table.mainTable {
     border-collapse: collapse;
+    width:50%;
+    margin-left:auto;
+    margin-right:auto;
 }
 .heading{
 	 background-color:#b71c1c;  
@@ -27,17 +30,32 @@ table {
     padding:4px;  
     text-align:center;  
 }
-table, th, td {
-    border: 1px solid black;
+table.buttonTable {
+	
+    width:50%;
+    margin-left:auto;
+    margin-right:auto;
+    border: 0 px;
+    
 }
-tr:nth-child(even) {background-color: #f2f2f2}
+table.buttonTable td{
+	border:none;
+
+}
+table.mainTable th, td {
+    border: 1px solid black;
+    text-align:center;
+}
+table.mainTable tr:nth-child(even) {background-color: #f2f2f2}
 
 input[type=submit] {
     width: 100%;
+    margin-left:auto;
+    margin-right:auto;
     background-color: #E91E63;
     color:  white;
-    padding: 8px 8px;
-    margin: 0px 0;
+    padding: 10px 10px;
+    
     border: none;
     border-radius: 2px;
     cursor: pointer;
@@ -45,27 +63,85 @@ input[type=submit] {
 </STYLE>
 <body>
 <h3 class="heading"> Vehicle Depart Info</h3>
-<TABLE BORDER="1">
-     <TR>
+<TABLE class="mainTable" BORDER="1">
+     <Tr>
          <TH>Vehicle NO.</TH>
+         <TD> <s:property value="vehicleNumber"/></td>
+     </Tr>
+     
+     <TR>
          <TH>Vehicle Type</TH>
+      	<TD> <s:property value="vehicleType"/></TD>
+     </TR>
+     
+      <TR>
          <TH>Floor Number</TH>
-         <TH>Space Number</TH>
+         <TD> <s:property value="floorNumber"/></TD>
+      </TR>
+      
+      <TR>
+         
          <TH>Entry Time</TH>
+         <TD> <s:property value="entryTime"/></TD>
+      </TR>
+       
+       <TR>
          <TH>Exit Time</TH>
-	</TR>
-	<TR>
-		<TD> <s:property value="vehicleNumber"/></td>
-		<TD> <s:property value="vehicleType"/></TD>
-	    <TD> <s:property value="floorNumber"/></TD>
-		<TD> <s:property value="spaceNumber"/></TD>
-		<TD> <s:property value="entryTime"/></TD>
-		<TD> <s:property value="exitTime"/></TD>
-            </TR>
+         <TD> <s:property value="exitTime"/></TD>
+       </TR>
+       
+       <TR>
+       		<TH>Parking Duration</TH>
+       		<TD><s:property value="duration"/> hrs.</TD>
+       </TR>
+       <tr>
+       <Th>Cost Calculation</Th>
+       <td>
+       <s:property value="costInformation"/>
+       
+       </td>
+       </tr>
+       
+       <TR>
+       		<TH>Total Parking Cost</TH>
+       		<Td><s:property value="payment"/></Td>
+       		</TR>
+
+		
+	    
+		
+		
+		
+           
 
 </table>
-<form action="fromDepartToEntry">
- 	<input type="submit" value="To Entry">
+<table class="buttonTable">
+<tr>
+	<td>
+		<form action="fromDepartToEntry">
+		 	<input type="submit" value="To Entry">
+		 </form>
+	</td>
+
+	<td>
+	 <form action="fromEntryToDepart">
+ 	<input type="submit" value="To Depart">
  </form>
+	</td>
+	</tr>
+	<tr>
+	<td>
+	 <form action="parkingSummary">
+ 	<input type="submit" value="Parking Summary">
+ </form>
+	</td>
+	<td>
+	 <form action="costSummary">
+ 	<input type="submit" value="Cost Summary">
+ </form>
+	</td>
+	
+</tr>
+ </table>
 </body>
 </html>
