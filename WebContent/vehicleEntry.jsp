@@ -93,13 +93,9 @@ padding:10px;
 </style>
 </head>
 <body>
- <div class="vertical-menu">
-  <a href="index.jsp" class="active">Home</a>
-  <a href="vehicleDepart.jsp">Depart</a>
-  <a href="costSummary.jsp">Cost Summary</a>
-  <a href="parkingSummary.jsp">Parking Summary</a>
+ 
 
-</div> 
+
 <h3 class="formheading">Vehicle entry Form</h3>
 <div class="firstDiv">
 <div>
