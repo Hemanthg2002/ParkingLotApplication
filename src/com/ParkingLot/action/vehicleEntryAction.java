@@ -24,6 +24,8 @@ public class vehicleEntryAction extends ActionSupport{
 	private int nextSpaceNumber;
 	private String selectedVehicleType=new String();
 	private String info=new String();
+	private String entryTime=new String();
+	
 	int vehicleId=1;
 	User user =new User();
 	
@@ -31,9 +33,65 @@ public class vehicleEntryAction extends ActionSupport{
 	public void validate()
 	{
 		//Method for checking if Empty
+		if(StringUtils.isEmpty(vehicleNumber))
+		{
+			addFieldError("vehicleNumber", "Vehicle Number cannot be Blank");
+			info="Acccess Denied! Provide proper Vehicle Number.";
+		}
+		
 			
-				//info="Acccess Denied! Provide proper number of Floors.";
-				//addFieldError("vehicleNumber", "Vehicle with the given vehicle number is already parked inside");
+		//Method for checking if entry is wrong.
+				Connection c = null;
+				Statement stmt=null;
+				ResultSet rs=null;
+				entryTime=null;
+				int affectedrows=0;
+				try {
+					Class.forName("org.postgresql.Driver");
+					c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/test2","postgres", "admin");
+					c.setAutoCommit(false);
+					
+					//Creation of Statement.
+					stmt=c.createStatement();
+					
+					
+					String sql="select * from parkinglot where vehicle_no=?";
+					affectedrows=0;
+					
+					try(PreparedStatement pstmt = c.prepareStatement(sql)){
+							
+							pstmt.setString(1,vehicleNumber);
+							rs = pstmt.executeQuery();
+							//affectedrows=pstmt.executeUpdate();
+							System.out.println(affectedrows+" "+rs+"- from Validate.");
+							while(rs.next())
+							{
+								//vehicleType=rs.getString("vehicletype");
+								//floorNumber=rs.getInt("floornumber");
+								entryTime=rs.getString("entrytime");
+							}
+						System.out.println(entryTime+"-from Validate");
+						}
+					catch(SQLException ex)
+					{
+						System.out.println(ex.getMessage()+" from validate Entry Action 1");
+					}
+					
+					
+					stmt.close();
+					c.commit();
+					c.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+					System.err.println(e.getClass().getName()+": "+e.getMessage());
+					System.exit(0);
+					}
+				if(entryTime!=null)
+				{
+					info="Acccess Denied! Vehicle Number Already Present in the Parking Lot.";
+					addFieldError("vehicleNumber", "Vehicle of given Vehicle Number is inside Parking Lot");
+				}
+				
 			
 	}
 	
@@ -111,26 +169,8 @@ public class vehicleEntryAction extends ActionSupport{
 		
 		
 		//Updating vehicle Limit table
-				String sqlbike="update vehiclelimit set bike=bike+1 where floornumber=?";
-				String sqlcar="update vehiclelimit set car=car+1 where floornumber=?";
-				String sqlbus="update vehiclelimit set bus=bus+1 where floornumber=?";
-				String sql4=new String();
-				if(vehicleId==1)
-					sql4=sqlbike;
-				else if(vehicleId==2)
-					sql4=sqlcar;
-				else if(vehicleId==3)
-					sql4=sqlbus;
-				try(PreparedStatement pstmt=c.prepareStatement(sql4)){
-					pstmt.setInt(1, nextFloorNumber);
-					System.out.println(pstmt+" Pstatement vehicle limit updation");
-					affectedrows=pstmt.executeUpdate();
-					System.out.println(affectedrows);
-				}
-				catch(SQLException ex)
-				{
-					System.out.println(ex.getMessage());
-				}
+		updateVehicleLimitTable();
+				
 		
 		//updating the occupied flag in occupied flag table
 		sql="update occupiedflag set occupied=1 where floornumber=? and spacenumber=?";
@@ -169,6 +209,54 @@ public class vehicleEntryAction extends ActionSupport{
 		
 		return "success";
 	}
+
+	private void updateVehicleLimitTable() {
+		// TODO Auto-generated method stub
+		
+		Connection c = null;
+		Statement stmt=null;
+		try {
+			Class.forName("org.postgresql.Driver");
+			c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/test2","postgres", "admin");
+			c.setAutoCommit(false);
+			
+			//Creation of Statement.
+			stmt=c.createStatement();
+		
+			String sqlbike="update vehiclelimit set bike=bike+1 where floornumber=?";
+			String sqlcar="update vehiclelimit set car=car+1 where floornumber=?";
+			String sqlbus="update vehiclelimit set bus=bus+1 where floornumber=?";
+			String sql4=new String();
+			if(vehicleId==1)
+				sql4=sqlbike;
+			else if(vehicleId==2)
+				sql4=sqlcar;
+			else if(vehicleId==3)
+				sql4=sqlbus;
+			
+			int affectedrows=0;
+			try(PreparedStatement pstmt=c.prepareStatement(sql4)){
+				pstmt.setInt(1, nextFloorNumber);
+				System.out.println(pstmt+" Pstatement vehicle limit updation");
+				affectedrows=pstmt.executeUpdate();
+				System.out.println(affectedrows);
+			}
+			catch(SQLException ex)
+			{
+				System.out.println(ex.getMessage());
+			}
+			
+			stmt.close();
+			c.commit();
+			c.close();
+			} catch (Exception e) {
+			e.printStackTrace();
+			System.err.println(e.getClass().getName()+": "+e.getMessage());
+			System.exit(0);
+			}
+		
+	}
+
 
 	private void updateVehicleSpacesTable() {
 		// TODO Auto-generated method stub

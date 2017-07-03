@@ -79,7 +79,7 @@ table.mainTable tr:nth-child(even) {background-color: #f2f2f2}
            ResultSet resultset = statement.executeQuery(sql);
             
         %>
-		<H1 class="heading" >Cost Summary Database Table </H1>
+		<H2 class="heading" >Cost Summary Database Table </H2>
         <TABLE class="mainTable" BORDER="1">
             <TR>
               
@@ -99,6 +99,7 @@ table.mainTable tr:nth-child(even) {background-color: #f2f2f2}
             </TR>
             <% } %>
         </TABLE>
+        <!--  
 <table class="buttonTable" cellspacing="0" cellpadding="0">
 <tr>
 	<td>
@@ -114,5 +115,6 @@ table.mainTable tr:nth-child(even) {background-color: #f2f2f2}
 	</td>
 </tr>
  </table>
+ -->
 </body>
 </html>

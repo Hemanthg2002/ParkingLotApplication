@@ -109,6 +109,8 @@ table.mainTable tr:nth-child(even) {background-color: #f2f2f2}
             </TR>
             <% } %>
         </TABLE>
+        
+        <!-- 
 <table class="buttonTable" cellspacing="0" cellpadding="0">
 <tr>
 	<td>
@@ -136,6 +138,15 @@ table.mainTable tr:nth-child(even) {background-color: #f2f2f2}
 	</td>
 	
  </table>
- 
+ -->
+ <table class="buttonTable" cellspacing="0" cellpadding="0">
+ 	<tr>
+ 		<td>
+	 	<form action="mainTabs">
+ 			<input type="submit" value="Main Menu">
+ 		</form>
+	</td>
+ 	</tr>
+ </table>
     </BODY>
 </HTML>

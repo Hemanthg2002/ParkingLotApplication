@@ -41,7 +41,7 @@ table.mainTable{
 }
 
 .heading{
-	 background-color:#4CBF50;  
+	 background-color:#b71c1c;  
     color:white;  
     padding:4px;  
     text-align:center;  
@@ -70,7 +70,7 @@ table.mainTable tr:nth-child(even) {background-color: #f2f2f2}
 </head>
 <body>
 
-<h3 class="heading">Parking Summary</h3>
+<h2 class="heading">Parking Summary</h2>
 
 
   <% 

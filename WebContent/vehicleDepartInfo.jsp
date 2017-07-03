@@ -115,6 +115,7 @@ input[type=submit] {
            
 
 </table>
+<!--  
 <table class="buttonTable">
 <tr>
 	<td>
@@ -142,6 +143,17 @@ input[type=submit] {
 	</td>
 	
 </tr>
+ </table>
+ 
+ -->
+ <table class="buttonTable">
+ 	<tr>
+ 		<td>
+ 			<form action="mainTabs">
+ 			<input type="submit" value="Main Menu">
+			 </form>
+ 		</td>
+ 	</tr>
  </table>
 </body>
 </html>
