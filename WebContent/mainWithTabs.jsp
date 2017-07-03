@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<meta http-equiv="refresh" content="30"/>
+<meta http-equiv="refresh" content="60"/>
 <title>Main with Tabs</title>
  <link rel = "stylesheet"
    type = "text/css"
@@ -14,6 +14,7 @@
 </head>
 <body>
 
+<header id="header"><h2 align="center">Parking Lot Application</h2></header>
 
 <!-- Vertical Tabs -->
 <div class="tab">

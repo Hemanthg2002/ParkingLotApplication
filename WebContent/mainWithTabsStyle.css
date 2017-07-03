@@ -7,7 +7,7 @@ box-sizing: border-box
 
 html,body { height: 100%; margin: 0px; padding: 0px; }
 #div.tab { background: #0f0; height: 100% }
-#div.tabcontent { background: #0f0; height: 100% }
+#div.tabcontent { background: #eeeeee; height: 100% }
 
 body {
 font-family: "Lato", sans-serif;
@@ -61,7 +61,7 @@ div.tab button.active {
 /*Vehicle-Entry-Styles*/
 
 body {
-    background-color: #ffebee;
+    background-color: #eeeeee;
     align:center;
 }
 
@@ -103,9 +103,18 @@ input[type=submit]:hover {
   
 }
 
+#header, #footer {
+			font-size: large;
+			font-family:Verdana;
+			padding: 0.3em;
+			color:white;
+			background: #131313;
+			height:125px;
+		}
+
 .firstDiv {
     border-radius: 5px;
-    background-color: #ffdce1;
+    background-color: #e0e0e0;
     padding: 2px;
     align:center;
     width: 500px;
